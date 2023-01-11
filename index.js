@@ -5,6 +5,7 @@ const sendMail = require('./src/sendMail');
 const sendDingTalk = require('./src/sendDingTalk');
 const sendWxWork = require('./src/sendWxWork')
 const getPoint = require('./src/getPoint');
+const randomVisit = require('./src/randomVisit');
 
 const { autoGame } = require('./src/games/autoRun');
 
@@ -23,6 +24,12 @@ const { autoGame } = require('./src/games/autoRun');
   }
 
   console.log(sign_res);
+
+  try {
+    await randomVisit()
+  } catch (error) {
+    console.log(error);
+  }
 
   let draw_res = '';
   try {
