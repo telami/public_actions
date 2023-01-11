@@ -19,7 +19,7 @@ async function randomVisit() {
     console.log(`前端列表页：${indexRes}`);  
 
   const data = {
-    client_type: '2608',
+    client_type: 2608,
     cursor: "0",
     id_type: 2,
     limit: 20,
