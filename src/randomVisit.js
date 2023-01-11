@@ -34,6 +34,8 @@ async function randomVisit() {
     body: JSON.stringify(data)
   }).then((res) => res.json());
 
+  console.log(articles)
+
   if (articles.err_no !== 0) return Promise.reject('查询文章列表，接口调用异常！');
   
   const article_id = articles.data[0].item_info.article_id
