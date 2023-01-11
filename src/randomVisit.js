@@ -16,7 +16,7 @@ async function randomVisit() {
         credentials: 'include'
     });
 
-    console.log(`前端列表页：${indexRes}`);  
+    console.log("访问完前端列表页了");  
 
   const data = {
     client_type: 2608,
@@ -38,12 +38,19 @@ async function randomVisit() {
 
   if (articles.err_no !== 0) return Promise.reject('查询文章列表，接口调用异常！');
   
-  const article_id = articles.data[0].item_info.article_id
+  const article_id_0 = articles.data[0].item_info.article_id
+  const article_id_1 = articles.data[1].item_info.article_id
+  const article_id_2 = articles.data[2].item_info.article_id
 
-  console.log(article_id)
+  visitArticleDetail(article_id_0)
+  visitArticleDetail(article_id_1)
+  visitArticleDetail(article_id_2)
+  
+}
 
-
-  // 访问文章详情页
+async function visitArticleDetail(article_id) {
+  console.log(`article_id：${article_id}`)
+      // 访问文章详情页
   const res = await fetch('https://juejin.cn/post/' + article_id, {
     headers,
     method: 'GET',
@@ -51,7 +58,6 @@ async function randomVisit() {
   });
 
   console.log(`文章详情页：${res}`);
-  
 }
 
 module.exports = randomVisit;
